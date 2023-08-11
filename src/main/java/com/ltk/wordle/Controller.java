@@ -62,8 +62,6 @@ public class Controller implements Initializable {
 
     private final Set<String> allWords = new HashSet<>();
 
-    private final Set<Character> allLetters = Set.of('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z');
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         readWords();
@@ -148,7 +146,7 @@ public class Controller implements Initializable {
     }
 
     private Character getFixedChar(int index) {
-        String text = null;
+        String text;
         switch (index) {
             case 0:
                 text = txfLetter1.getText();
