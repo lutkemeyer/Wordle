@@ -1,4 +1,4 @@
-package com.example.wordle;
+package com.ltk.wordle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -11,7 +11,6 @@ import java.net.URL;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Controller implements Initializable {
 

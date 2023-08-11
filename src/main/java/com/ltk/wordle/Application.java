@@ -1,4 +1,4 @@
-package com.example.wordle;
+package com.ltk.wordle;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
