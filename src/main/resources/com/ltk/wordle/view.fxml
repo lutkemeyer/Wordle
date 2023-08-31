@@ -4,7 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ltk.wordle.Controller">
+<GridPane hgap="10.0" vgap="10.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ltk.wordle.screens.main.MainController">
     <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" prefWidth="400.0" />
     </columnConstraints>
@@ -13,6 +13,7 @@
         <RowConstraints percentHeight="0.0" vgrow="NEVER" />
         <RowConstraints percentHeight="0.0" vgrow="NEVER" />
         <RowConstraints percentHeight="0.0" vgrow="NEVER" />
+      <RowConstraints percentHeight="0.0" vgrow="NEVER" />
         <RowConstraints maxHeight="1.7976931348623157E308" vgrow="ALWAYS" />
       <RowConstraints percentHeight="0.0" vgrow="NEVER" />
     </rowConstraints>
@@ -22,11 +23,11 @@
 
     <VBox>
         <Label text="Letras inexistentes" />
-        <TextField fx:id="txfLetrasInexistentes" />
+        <TextField fx:id="txfNonexistent" />
     </VBox>
     <VBox GridPane.rowIndex="1">
         <Label text="Letras existentes" />
-        <TextField fx:id="txfLetrasExistentes" />
+        <TextField fx:id="txfExistingChars" />
     </VBox>
     <VBox GridPane.rowIndex="2">
         <Label text="Letras fixas" />
@@ -41,11 +42,11 @@
             <rowConstraints>
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <TextField fx:id="txfLetter1" />
-            <TextField fx:id="txfLetter2" GridPane.columnIndex="1" />
-            <TextField fx:id="txfLetter3" GridPane.columnIndex="2" />
-            <TextField fx:id="txfLetter4" GridPane.columnIndex="3" />
-            <TextField fx:id="txfLetter5" GridPane.columnIndex="4" />
+            <TextField fx:id="txfFixedChar1" />
+            <TextField fx:id="txfFixedChar2" GridPane.columnIndex="1" />
+            <TextField fx:id="txfFixedChar3" GridPane.columnIndex="2" />
+            <TextField fx:id="txfFixedChar4" GridPane.columnIndex="3" />
+            <TextField fx:id="txfFixedChar5" GridPane.columnIndex="4" />
         </GridPane>
     </VBox>
     <VBox GridPane.rowIndex="3">
@@ -61,21 +62,26 @@
             <rowConstraints>
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
             </rowConstraints>
-            <TextField fx:id="txfWrongLetter1" />
-            <TextField fx:id="txfWrongLetter2" GridPane.columnIndex="1" />
-            <TextField fx:id="txfWrongLetter3" GridPane.columnIndex="2" />
-            <TextField fx:id="txfWrongLetter4" GridPane.columnIndex="3" />
-            <TextField fx:id="txfWrongLetter5" GridPane.columnIndex="4" />
+            <TextField fx:id="txfWrongChars1" />
+            <TextField fx:id="txfWrongChars2" GridPane.columnIndex="1" />
+            <TextField fx:id="txfWrongChars3" GridPane.columnIndex="2" />
+            <TextField fx:id="txfWrongChars4" GridPane.columnIndex="3" />
+            <TextField fx:id="txfWrongChars5" GridPane.columnIndex="4" />
         </GridPane>
     </VBox>
-    <VBox GridPane.rowIndex="4">
+    <VBox GridPane.rowIndex="5">
         <HBox spacing="5.0">
             <Label text="Resultados" />
-            <Label fx:id="lblQtdResultados" layoutX="10.0" layoutY="10.0" />
+            <Label fx:id="lblResultsQty" layoutX="10.0" layoutY="10.0" />
         </HBox>
         <ScrollPane fitToWidth="true" maxHeight="400.0" VBox.vgrow="ALWAYS">
-            <Label fx:id="lblResultados" />
+            <Label fx:id="lblResults" />
         </ScrollPane>
     </VBox>
-   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClickZerar" text="ZERAR" GridPane.hgrow="ALWAYS" GridPane.rowIndex="5" />
+   <VBox GridPane.rowIndex="4">
+      <children>
+         <ComboBox fx:id="cbbSort" maxWidth="1.7976931348623157E308" promptText="Ordenação" />
+      </children>
+   </VBox>
+   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#onClickClear" text="ZERAR" GridPane.hgrow="ALWAYS" GridPane.rowIndex="6" />
 </GridPane>

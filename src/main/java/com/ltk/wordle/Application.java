@@ -9,11 +9,16 @@ import java.io.IOException;
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("view.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Wordle");
         stage.setScene(scene);
         stage.show();
+
+        stage.setMinHeight(stage.getHeight() * 0.6d);
+        stage.setMinWidth(stage.getWidth());
+
     }
 
     public static void main(String[] args) {
