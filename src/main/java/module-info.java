@@ -1,6 +1,7 @@
 module com.example.wordle {
     requires javafx.controls;
     requires javafx.fxml;
+    requires lombok;
 
     opens com.ltk.wordle to javafx.fxml;
 

@@ -4,5 +4,6 @@ import java.util.Collection;
 
 public interface IFacadeListener {
     void onFacadeListenerUpdateResults(Collection<String> filteredWords);
+    void onFacadeListenerUpdatePossibilities(Collection<String> filteredWords);
 
 }

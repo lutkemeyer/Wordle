@@ -3,12 +3,12 @@ package com.ltk.wordle.screens.main;
 import com.ltk.wordle.exceptions.WordleException;
 import com.ltk.wordle.screens.AController;
 import com.ltk.wordle.util.ComboBoxUtil;
-import com.ltk.wordle.util.IComboBoxItem;
 import com.ltk.wordle.util.IComboBoxItem2;
 import com.ltk.wordle.util.SimpleComboBoxItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 import java.net.URL;
@@ -17,13 +17,19 @@ import java.util.*;
 public class MainController extends AController implements IMainFacadeListener {
 
     @FXML
-    private Label lblResults;
+    private TextArea txaResults;
 
     @FXML
     private Label lblResultsQty;
 
     @FXML
-    private TextField txfExistingChars;
+    private TextArea txaPossibilities;
+
+    @FXML
+    private Label lblPossibilitiesQty;
+
+//    @FXML
+//    private TextField txfExistingChars;
 
     @FXML
     private TextField txfNonexistent;
@@ -67,7 +73,6 @@ public class MainController extends AController implements IMainFacadeListener {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             facade.readWords();
-            txfExistingChars.textProperty().addListener((obs, oldV, newV) -> facade.onExistingCharsChanged(newV));
             txfNonexistent.textProperty().addListener((obs, oldV, newV) -> facade.onNonexistentCharsChanged(newV));
             txfFixedChar1.textProperty().addListener((obs, oldV, newV) -> facade.onFixedCharChanged(0, getFirstChar(newV)));
             txfFixedChar2.textProperty().addListener((obs, oldV, newV) -> facade.onFixedCharChanged(1, getFirstChar(newV)));
@@ -99,7 +104,6 @@ public class MainController extends AController implements IMainFacadeListener {
     @FXML
     public void onClickClear() {
         cbbSort.getSelectionModel().select(0);
-        txfExistingChars.setText("");
         txfNonexistent.setText("");
         txfFixedChar1.setText("");
         txfFixedChar2.setText("");
@@ -114,13 +118,19 @@ public class MainController extends AController implements IMainFacadeListener {
     }
 
     private Character getFirstChar(String s) {
-        return s != null ? s.charAt(0) : null;
+        return s != null && s.length() > 0 ? s.charAt(0) : null;
     }
 
     @Override
-    public void onFacadeListenerUpdateResults(Collection<String> filteredWords) {
-        lblResults.setText(String.join("\n", filteredWords));
-        lblResultsQty.setText("(" + filteredWords.size() + ")");
+    public void onFacadeListenerUpdateResults(Collection<String> collection) {
+        txaResults.setText(String.join("\n", collection));
+        lblResultsQty.setText("(" + collection.size() + ")");
     }
-    
+
+    @Override
+    public void onFacadeListenerUpdatePossibilities(Collection<String> collection) {
+        txaPossibilities.setText(String.join("\n", collection));
+        lblPossibilitiesQty.setText("(" + collection.size() + ")");
+    }
+
 }
